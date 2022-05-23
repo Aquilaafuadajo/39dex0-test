@@ -8,6 +8,7 @@ export interface ButtonProps
   background?: "primary" | "secondary" | "accent" | "grey" | "white" | string;
   color?: "primary" | "secondary" | "accent" | "grey" | "white" | string;
   size?: string;
+  toolTipTitle?: string;
 }
 
 export const BaseButton = styled.button<ButtonProps>`
@@ -84,7 +85,7 @@ export const BaseButton = styled.button<ButtonProps>`
 `;
 
 export const IconButton = styled(BaseButton)<
-  ButtonProps & { toolTipTitle?: string }
+  ButtonProps
 >`
   padding: 0;
   height: ${({ size }) => size || "3.3125rem"};

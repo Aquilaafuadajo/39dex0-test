@@ -13,10 +13,12 @@ export type SidebarConfig = {
 
 export type BuildSideBarItemsProps = {
   config: SidebarConfig[];
+  setModalOpen?: (hash: string) => void;
 };
 
 export const BuildSideBarItems: React.FC<BuildSideBarItemsProps> = ({
-  config
+  config,
+  setModalOpen,
 }) => {
   const [location, setLocation] = useLocation();
 
@@ -32,6 +34,7 @@ export const BuildSideBarItems: React.FC<BuildSideBarItemsProps> = ({
               <BuildSideBarItems
                 key={`sb-line-group-${index}`}
                 config={item.group}
+                setModalOpen={setModalOpen}
               />
               {index < config.length - 1 && <HR key={`sb-line-${index}`} />}
             </React.Fragment>
@@ -48,6 +51,9 @@ export const BuildSideBarItems: React.FC<BuildSideBarItemsProps> = ({
             onClick={() => {
               if (item.action) item.action();
               if (item.path) {
+                if (item.path.includes("#")) {
+                  setModalOpen(item.path.split("#")[1]);
+                }
                 setLocation(item.path);
               }
             }}
