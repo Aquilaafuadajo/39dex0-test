@@ -56,7 +56,7 @@ const Form: React.FC<BuildFormProps> = ({ config, onSumbit }) => {
                       name={col.name}
                       type={col.type}
                       placeholder={col.placeholder}
-                      value={formData[col.name]}
+                      value={formData[col.name] ?? ""}
                       onChange={(e) => onInputChange(e, col.name)}
                     />
                   </FormInput>
@@ -71,7 +71,7 @@ const Form: React.FC<BuildFormProps> = ({ config, onSumbit }) => {
                       name={col.name}
                       type={col.type}
                       placeholder={col.placeholder}
-                      value={formData[col.name]}
+                      value={formData[col.name] ?? ""}
                       onChange={(e) => onInputChange(e, col.name)}
                     />
                   </FormInput>
